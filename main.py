@@ -1,13 +1,12 @@
 from fastapi import FastAPI
-from app import run_agent   # change to your main function
+from app import run_agent
 
 app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"status": "AI Financial Analyst running"}
+    return {"status": "ok"}
 
 @app.post("/analyze")
 def analyze(data: dict):
-    result = run_agent(data)
-    return result
+    return run_agent(data)
