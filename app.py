@@ -1139,17 +1139,19 @@ Here are some documents that are relevant to the question mentioned below.
         context_list = [d.page_content for d in relevant_document_chunks]
         context_for_query = ". ".join(context_list)
 
-        # Build the full prompt
-        formatted_prompt = f"""[INST]{qna_system_message}
-
-                {'user'}: {qna_user_message_template.format(context=context_for_query, question=query)}
-                [/INST]"""
+        # Build the full prompt (clean, no accidental whitespace)
+        formatted_prompt = (
+            "[INST]"
+            f"{qna_system_message}\n\n"
+            f"{qna_user_message_template.format(context=context_for_query, question=query)}\n"
+            "[/INST]"
+        )
 
         # Query the LLM
-        model = ChatOpenAI(
-            model="gpt-4o-mini",
-            temperature=0
-        )
+        model = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+        response = model.invoke(formatted_prompt)
+        return response.content
+
 
         response = model.invoke(formatted_prompt)
 
