@@ -58,11 +58,11 @@ logger = logging.getLogger(__name__)
 # In[5]:
 
 
-import json
+#import json
 # Load the JSON file and extract values
-file_name = "/content/drive/MyDrive/JHU_AI/Project_2/config.json"
-with open(file_name, 'r') as file:
-    config = json.load(file)
+#file_name = "/content/drive/MyDrive/JHU_AI/Project_2/config.json"
+#with open(file_name, 'r') as file:
+   # config = json.load(file)
 
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
