@@ -1464,118 +1464,11 @@ def create_enhanced_financial_agent(with_rag: bool = True, with_memory: bool = T
 # In[41]:
 
 
-# Test 5: Agent with RAG - AI Research Activity Check
-
-# Let's test the enhanced agent's ability to analyze companies with AI research insights.
-
-#print("="*80)
-#print("TEST 5: Enhanced Agent with RAG - AI Research Activity Check")
-#print("="*80 + "\n")
-
-# Create enhanced agent with RAG
-#enhanced_agent = create_enhanced_financial_agent(with_rag=True, with_memory=True)
-
-# Test query that requires AI research information
-#query = "Provide a comprehensive investment analysis for NVIDIA (NVDA) including their AI research initiatives"
-#print(f"Query: {query}\n")
-#print("-"*80 + "\n")
-
-# Run agent with memory
-#config = {"configurable": {"thread_id": "enhanced_test_1"}}
-#result = enhanced_agent.invoke(
-
-    #{"messages": [HumanMessage(content=query)]},
-    #config=config
-#)
-
-#print("\n🤖 ENHANCED AGENT RESPONSE (with RAG):")
-#print("="*80)
-#print(result["messages"][-1].content)
-#print("\n" + "="*80)
-#print("\n✅ Notice: The agent now includes:")
-#print("   • AI research projects from private analyst reports")
-#print("   • Specific AI initiative details")
-#print("   • Integration of financial + AI research data")
-#print("   • Comprehensive investment recommendation")
 
 
-# In[43]:
 
 
-# Demonstrate how the agent uses multiple tools together: news search → sentiment analysis → RAG query.
-#print("="*80)
-#print("TEST 6: Synergistic Tool Usage (News + Sentiment + RAG)")
-#print("="*80 + "\n")
 
-#query = "Analyze Microsoft's position in the AI market. Include recent news sentiment and their strategic AI initiatives."
-#print(f"Query: {query}\n")
-#print("-"*80 + "\n")
-
-#config = {"configurable": {"thread_id": "synergy_test_1"}}
-#result = enhanced_agent.invoke(
-    #{"messages": [HumanMessage(content=query)]},
-    #config=config
-#)
-
-#print("\n🤖 AGENT RESPONSE (Synergistic Tool Usage):")
-#print("="*80)
-#print(result["messages"][-1].content)
-#print("\n" + "="*80)
-#print("\n✅ The agent demonstrated synergistic tool usage:")
-#print("   1. search_financial_news() - Found recent articles")
-#print("   2. analyze_sentiment() - Analyzed news sentiment")
-#print("   3. query_private_database() - Retrieved AI initiative details")
-#print("   4. get_stock_history() - Got financial performance")
-#print("   5. Synthesized all data into comprehensive report")
-
-
-# In[45]:
-
-
-# Rank companies based on both financial performance AND AI research activity.
-#print("="*80)
-#print("TEST 7: Investment Recommendation System - Multi-Company Ranking")
-#print("="*80 + "\n")
-
-# Define companies to analyze
-companies = ["MSFT", "GOOGL", "NVDA", "AMZN", "IBM"]
-
-query = f"""
-
-You are an autonomous financial analyst. Perform a comparative investment
-analysis across the following companies. For each company, you MUST:
-1. Retrieve stock performance (current + 3-year history)
-2. Analyze recent financial news and sentiment
-3. Query private database for AI research initiatives
-4. Identify risks and opportunities
-5. Produce a Buy/Hold/Sell recommendation with confidence
-6. Provide proper citations for all sources
-
-Companies to analyze: {', '.join(companies)}
-
-
-After analyzing each company individually, produce:
-1. A ranked list from strongest to weakest investment opportunity
-2. A short justification for each ranking position
-3. A final summary: “Best AI-sector investment among these companies is ___ because…”
-4. NOTE: Use consistent evaluation criteria for fairness (financial strength, AI activity, sentiment, risk)
-
-"""
-
-#print(f"Query: Multi-company investment ranking\n")
-#print(f"Companies: {', '.join(companies)}\n")
-#print("-"*80 + "\n")
-
-config = {"configurable": {"thread_id": "ranking_test_1"}}
-#result = enhanced_agent.invoke(
-    {"messages": [HumanMessage(content=query)]},
-    config=config
-)
-
-#print("\n🤖 INVESTMENT RANKING REPORT:")
-#print("="*80)
-#print(result["messages"][-1].content)
-#print("\n" + "="*80)
 
 
 # In[46]:
