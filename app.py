@@ -51,8 +51,8 @@ logger = logging.getLogger(__name__)
 
 
 # Let Google Colab access my google drive
-from google.colab import drive
-drive.mount('/content/drive')
+#from google.colab import drive
+#drive.mount('/content/drive')
 
 
 # In[5]:
@@ -65,9 +65,9 @@ with open(file_name, 'r') as file:
     config = json.load(file)
 
 
-os.environ["OPENAI_API_KEY"] = config.get("API_KEY")
-os.environ["OPENAI_API_BASE"] = config.get("OPENAI_API_BASE")
-os.environ["TAVILY_API_KEY"] = config.get("TAVILY_API_KEY")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY")
+OPENAI_API_BASE = os.environ.get("OPENAI_API_BASE")
 
 #print("✅ Configuration loaded successfully!")
 #print(f"   Using API base: {os.environ['OPENAI_API_BASE']}")
