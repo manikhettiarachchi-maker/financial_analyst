@@ -1007,7 +1007,7 @@ ai_initiative_chunks = loader.load_and_split(text_splitter)
 #print(f"   • Average chunk size: ~1000 tokens")
 
 # Show a sample chunk
-if ai_initiative_chunks:
+#if ai_initiative_chunks:
     #print(f"\n📋 Sample chunk preview:")
     #print(f"   Source: {ai_initiative_chunks[0].metadata.get('source', 'Unknown')}")
     #print(f"   Content preview: {ai_initiative_chunks[0].page_content[:200]}...")
