@@ -870,34 +870,16 @@ def create_agent_with_failing_tool():
 
 # Test Error Handling
 
-#print("="*80)
-#print("TEST 4: Error Handling and Reactivity")
-#print("="*80 + "\n")
-#print("⚠️  Simulating tool failure: get_stock_price will return an error")
-#print("   Let's see how the agent reacts...\n")
-#print("-"*80 + "\n")
+# Test Error Handling (LOCAL ONLY)
+if __name__ == "__main__":
+    print("="*80)
+    print("TEST 4: Error Handling and Reactivity")
+    print("="*80 + "\n")
 
-# Create agent with failing tool
-failing_agent = create_agent_with_failing_tool()
-
-# Test query
-query = "Analyze Apple stock (AAPL)"
-#print(f"Query: {query}\n")
-#print("-"*80 + "\n")
-
-# Run agent
-result = failing_agent.invoke({"messages": [HumanMessage(content=query)]})
-
-#print("\n🤖 AGENT RESPONSE (with tool failure):")
-#print("="*80)
-#print(result["messages"][-1].content)
-#print("\n" + "="*80)
-#print("\n✅ Observe how the agent:")
-#print("   • Detects the tool failure")
-#print("   • Tries alternative approaches (get_stock_history, news search)")
-#print("   • Acknowledges the data gap in the report")
-#print("   • Continues analysis with available information")
-#print("   • Adjusts confidence level based on incomplete data")
+    failing_agent = create_agent_with_failing_tool()
+    query = "Analyze Apple stock (AAPL)"
+    result = failing_agent.invoke({"messages": [HumanMessage(content=query)]})
+    print(result["messages"][-1].content)
 
 
 # In[29]:
