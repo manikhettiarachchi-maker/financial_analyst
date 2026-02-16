@@ -1018,8 +1018,8 @@ if ai_initiative_chunks:
 
 # Step 4: Create Vector Store with Embeddings - create embeddings for each chunk and store them in ChromaDB for semantic search.
 
-    from langchain_openai import OpenAIEmbeddings
-    from langchain_community.vectorstores import Chroma
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import Chroma
 
 
 # Initialize OpenAI embedding model (text-embedding-ada-002)
