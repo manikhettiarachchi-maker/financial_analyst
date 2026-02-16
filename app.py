@@ -1473,20 +1473,20 @@ def create_enhanced_financial_agent(with_rag: bool = True, with_memory: bool = T
 #print("="*80 + "\n")
 
 # Create enhanced agent with RAG
-enhanced_agent = create_enhanced_financial_agent(with_rag=True, with_memory=True)
+#enhanced_agent = create_enhanced_financial_agent(with_rag=True, with_memory=True)
 
 # Test query that requires AI research information
-query = "Provide a comprehensive investment analysis for NVIDIA (NVDA) including their AI research initiatives"
+#query = "Provide a comprehensive investment analysis for NVIDIA (NVDA) including their AI research initiatives"
 #print(f"Query: {query}\n")
 #print("-"*80 + "\n")
 
 # Run agent with memory
-config = {"configurable": {"thread_id": "enhanced_test_1"}}
-result = enhanced_agent.invoke(
+#config = {"configurable": {"thread_id": "enhanced_test_1"}}
+#result = enhanced_agent.invoke(
 
-    {"messages": [HumanMessage(content=query)]},
-    config=config
-)
+    #{"messages": [HumanMessage(content=query)]},
+    #config=config
+#)
 
 #print("\n🤖 ENHANCED AGENT RESPONSE (with RAG):")
 #print("="*80)
@@ -1513,8 +1513,8 @@ result = enhanced_agent.invoke(
 
 #config = {"configurable": {"thread_id": "synergy_test_1"}}
 #result = enhanced_agent.invoke(
-#    {"messages": [HumanMessage(content=query)]},
- #   config=config
+    #{"messages": [HumanMessage(content=query)]},
+    #config=config
 #)
 
 #print("\n🤖 AGENT RESPONSE (Synergistic Tool Usage):")
