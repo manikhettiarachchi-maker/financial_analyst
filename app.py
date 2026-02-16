@@ -1600,3 +1600,52 @@ config = {"configurable": {"thread_id": "ranking_test_1"}}
 #print(result["messages"][-1].content)
 #print("\n" + "="*80)
 
+# =========================
+# Production entry function
+# =========================
+
+_enhanced_agent = None
+
+def get_enhanced_agent():
+    """
+    Lazy-init the agent so importing app.py never triggers heavy work.
+    Cloud Run imports this module at startup; we must keep import side-effects minimal.
+    """
+    global _enhanced_agent
+    if _enhanced_agent is None:
+        _enhanced_agent = create_enhanced_financial_agent(with_rag=True, with_memory=True)
+    return _enhanced_agent
+
+
+def run_agent(payload: dict) -> dict:
+    """
+    Payload example:
+      {"query": "Analyze NVDA and its AI initiatives"}
+
+    Returns JSON-serializable dict.
+    """
+    query = (payload or {}).get("query", "").strip()
+    if not query:
+        return {"error": "Missing 'query' in request body."}
+
+    agent = get_enhanced_agent()
+
+    # Keep thread_id stable if you want memory per user/session; otherwise use a fixed value.
+    thread_id = (payload or {}).get("thread_id", "cloudrun_default")
+    config = {"configurable": {"thread_id": thread_id}}
+
+    result = agent.invoke({"messages": [HumanMessage(content=query)]}, config=config)
+
+    # Return the last assistant message content
+    answer = result["messages"][-1].content if result.get("messages") else ""
+    return {"answer": answer}
+
+
+# =========================
+# Optional local-only tests
+# =========================
+if __name__ == "__main__":
+    # This section runs ONLY when you execute `python app.py` locally.
+    # It will NOT run on Cloud Run import.
+    demo = {"query": "Provide an investment analysis for NVDA, focusing on AI initiatives."}
+    print(run_agent(demo))
