@@ -1488,7 +1488,7 @@ custom_query = "Find a public company with strong financial performance but unde
 
 config = {"configurable": {"thread_id": "ranking_test_1"}}
 #result = enhanced_agent.invoke(
-    {"messages": [HumanMessage(content=custom_query)]},
+   # {"messages": [HumanMessage(content=custom_query)]},
     config=config
 )
 
