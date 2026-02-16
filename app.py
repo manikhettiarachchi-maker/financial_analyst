@@ -44,7 +44,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-print("✅ All imports successful!")
+#print("✅ All imports successful!")
 
 
 # In[4]:
@@ -69,8 +69,8 @@ os.environ["OPENAI_API_KEY"] = config.get("API_KEY")
 os.environ["OPENAI_API_BASE"] = config.get("OPENAI_API_BASE")
 os.environ["TAVILY_API_KEY"] = config.get("TAVILY_API_KEY")
 
-print("✅ Configuration loaded successfully!")
-print(f"   Using API base: {os.environ['OPENAI_API_BASE']}")
+#print("✅ Configuration loaded successfully!")
+#print(f"   Using API base: {os.environ['OPENAI_API_BASE']}")
 
 
 # ---
@@ -90,15 +90,15 @@ print(f"   Using API base: {os.environ['OPENAI_API_BASE']}")
 TRADITIONAL_PROMPT = """You are a helpful assistant.
 Answer the user's question about stock information."""
 
-print("📋 Traditional LLM Prompt:")
-print("="*80)
-print(TRADITIONAL_PROMPT)
-print("="*80)
-print("\n❌ Problems with this approach:")
-print("   • No initiative - waits for user to specify what they want")
-print("   • No comprehensive analysis - just answers the question")
-print("   • Asks follow-up questions instead of taking action")
-print("   • Provides minimal information")
+#print("📋 Traditional LLM Prompt:")
+#print("="*80)
+#print(TRADITIONAL_PROMPT)
+#print("="*80)
+#print("\n❌ Problems with this approach:")
+#print("   • No initiative - waits for user to specify what they want")
+#print("   • No comprehensive analysis - just answers the question")
+#print("   • Asks follow-up questions instead of taking action")
+#print("   • Provides minimal information")
 
 
 # In[21]:
@@ -119,15 +119,15 @@ Generate a comprehensive financial analysis report for the requested company tha
 Take initiative to gather all necessary information to achieve this goal.
 Don't just answer questions - proactively provide complete, actionable insights."""
 
-print("📋 Agent Charter (Goal-Oriented):")
-print("="*80)
-print(AGENT_CHARTER_BASIC)
-print("="*80)
-print("\n✅ Benefits of this approach:")
-print("   • Defines a clear mission and goal")
-print("   • Specifies expected output format")
-print("   • Encourages proactive information gathering")
-print("   • Focuses on actionable insights, not just answers")
+#print("📋 Agent Charter (Goal-Oriented):")
+#print("="*80)
+#print(AGENT_CHARTER_BASIC)
+#print("="*80)
+#print("\n✅ Benefits of this approach:")
+#print("   • Defines a clear mission and goal")
+#print("   • Specifies expected output format")
+#print("   • Encourages proactive information gathering")
+#print("   • Focuses on actionable insights, not just answers")
 
 
 # In[6]:
@@ -204,9 +204,9 @@ def get_stock_price(ticker: str) -> Dict:
             'timestamp': datetime.now().isoformat()
         }
 
-print("✅ Tool 1: get_stock_price() - Defined")
-print("   Purpose: Fetch real-time stock price and basic metrics")
-print("   Data Source: Yahoo Finance (yfinance)")
+#print("✅ Tool 1: get_stock_price() - Defined")
+#print("   Purpose: Fetch real-time stock price and basic metrics")
+#print("   Data Source: Yahoo Finance (yfinance)")
 
 
 # In[7]:
@@ -282,9 +282,9 @@ def get_stock_history(ticker: str, period: str = "1y") -> Dict:
             'error': f'Error fetching historical data: {str(e)}'
         }
 
-print("✅ Tool 2: get_stock_history() - Defined")
-print("   Purpose: Fetch historical performance for trend analysis")
-print("   Key Metric: 3-year return percentage")
+#print("✅ Tool 2: get_stock_history() - Defined")
+#print("   Purpose: Fetch historical performance for trend analysis")
+#print("   Key Metric: 3-year return percentage")
 
 
 # In[8]:
@@ -334,9 +334,9 @@ def search_financial_news(query: str) -> List[Dict]:
             'error': f'Error searching news: {str(e)}'
         }]
 
-print("✅ Tool 3: search_financial_news() - Defined")
-print("   Purpose: Search real-time financial news")
-print("   Data Source: Tavily Search API")
+#print("✅ Tool 3: search_financial_news() - Defined")
+#print("   Purpose: Search real-time financial news")
+#print("   Data Source: Tavily Search API")
 
 
 # In[9]:
@@ -419,25 +419,25 @@ Respond in JSON format:
             'note': f'OpenAI analysis failed: {str(e)}'
         }
 
-print("✅ Tool 4: analyze_sentiment() - Defined")
-print("   Purpose: Analyze sentiment of financial text")
-print("   Method: OpenAI GPT-4 with keyword fallback")
+#print("✅ Tool 4: analyze_sentiment() - Defined")
+#print("   Purpose: Analyze sentiment of financial text")
+#print("   Method: OpenAI GPT-4 with keyword fallback")
 
 
 # In[10]:
 
 
 # Test get_stock_price manually
-print("🧪 Testing get_stock_price tool with ticker 'AAPL':\n")
-result = get_stock_price.invoke({"ticker": "AAPL"})
-print(json.dumps(result, indent=2))
+#print("🧪 Testing get_stock_price tool with ticker 'AAPL':\n")
+#result = get_stock_price.invoke({"ticker": "AAPL"})
+#print(json.dumps(result, indent=2))
 
-print("\n" + "="*80 + "\n")
+#print("\n" + "="*80 + "\n")
 
 # Test get_stock_history manually
-print("🧪 Testing get_stock_history tool with ticker 'AAPL' and period '3y':\n")
-result = get_stock_history.invoke({"ticker": "AAPL", "period": "3y"})
-print(json.dumps(result, indent=2))
+#print("🧪 Testing get_stock_history tool with ticker 'AAPL' and period '3y':\n")
+#result = get_stock_history.invoke({"ticker": "AAPL", "period": "3y"})
+#print(json.dumps(result, indent=2))
 
 
 # In[17]:
@@ -547,14 +547,14 @@ Remember: You are AUTONOMOUS. Take initiative, handle errors gracefully, and
 always drive toward your goal of comprehensive investment analysis.
 """
 
-print("📋 Full Agent Charter with Constraints:")
-print("="*80)
-print("Key features:")
-print("✅ Proactive Behavior: Takes initiative, gathers comprehensive data")
-print("✅ Reactive Behavior: Handles tool failures, adapts to missing data")
-print("✅ Autonomous Behavior: Makes independent judgments, cites sources")
-print("✅ Quality Standards: Structured output with confidence levels")
-print("="*80)
+#print("📋 Full Agent Charter with Constraints:")
+#print("="*80)
+#print("Key features:")
+#print("✅ Proactive Behavior: Takes initiative, gathers comprehensive data")
+#print("✅ Reactive Behavior: Handles tool failures, adapts to missing data")
+#print("✅ Autonomous Behavior: Makes independent judgments, cites sources")
+#print("✅ Quality Standards: Structured output with confidence levels")
+#print("="*80)
 
 
 # In[12]:
@@ -569,7 +569,7 @@ class SimpleAgentState(TypedDict):
     """
     messages: Annotated[Sequence, add_messages]
 
-print("✅ Agent state defined")
+#print("✅ Agent state defined")
 
 
 # In[15]:
@@ -707,52 +707,52 @@ def create_financial_agent(agent_type: str = "full", with_memory: bool = True):
 # Testing the Agent
 # Traditional LLM (Reactive)
 
-print("="*80)
-print("TEST 1: Traditional Reactive LLM")
-print("="*80 + "\n")
+#print("="*80)
+#print("TEST 1: Traditional Reactive LLM")
+#print("="*80 + "\n")
 
 # Create traditional agent
-traditional_agent = create_financial_agent(agent_type="traditional", with_memory=False)
+#traditional_agent = create_financial_agent(agent_type="traditional", with_memory=False)
 
 # Test query
-query = "Tell me about Apple stock"
-print(f"Query: {query}\n")
-print("-"*80 + "\n")
+#query = "Tell me about Apple stock"
+#print(f"Query: {query}\n")
+#print("-"*80 + "\n")
 
 # Run agent
-result = traditional_agent.invoke({"messages": [HumanMessage(content=query)]})
+#result = traditional_agent.invoke({"messages": [HumanMessage(content=query)]})
 
-print("\n🤖 TRADITIONAL LLM RESPONSE:")
-print("="*80)
-print(result["messages"][-1].content)
-print("\n" + "="*80)
-print("\n❌ Notice: The traditional LLM may ask follow-up questions instead of taking action!")
+#print("\n🤖 TRADITIONAL LLM RESPONSE:")
+#print("="*80)
+#print(result["messages"][-1].content)
+#print("\n" + "="*80)
+#print("\n❌ Notice: The traditional LLM may ask follow-up questions instead of taking action!")
 
 
 # In[24]:
 
 
 # Basic Autonomous Agent (Goal-Oriented)
-print("="*80)
-print("TEST 2: Basic Autonomous Agent (Goal-Oriented)")
-print("="*80 + "\n")
+#print("="*80)
+#print("TEST 2: Basic Autonomous Agent (Goal-Oriented)")
+#print("="*80 + "\n")
 
 # Create basic agent
-basic_agent = create_financial_agent(agent_type="basic", with_memory=False)
+#basic_agent = create_financial_agent(agent_type="basic", with_memory=False)
 
 # Test query
-query = "Tell me about Apple stock"
-print(f"Query: {query}\n")
-print("-"*80 + "\n")
+#query = "Tell me about Apple stock"
+#print(f"Query: {query}\n")
+#print("-"*80 + "\n")
 
 # Run agent
-result = basic_agent.invoke({"messages": [HumanMessage(content=query)]})
+#result = basic_agent.invoke({"messages": [HumanMessage(content=query)]})
 
-print("\n🤖 BASIC AGENT RESPONSE:")
-print("="*80)
-print(result["messages"][-1].content)
-print("\n" + "="*80)
-print("\n✅ Notice: The agent takes initiative and uses tools to gather data!")
+#print("\n🤖 BASIC AGENT RESPONSE:")
+#print("="*80)
+#print(result["messages"][-1].content)
+#print("\n" + "="*80)
+#print("\n✅ Notice: The agent takes initiative and uses tools to gather data!")
 
 
 # In[25]:
@@ -760,35 +760,35 @@ print("\n✅ Notice: The agent takes initiative and uses tools to gather data!")
 
 # Test 3: Full Autonomous Agent (With All Constraints)
 
-print("="*80)
-print("TEST 3: Full Autonomous Agent (With All Constraints)")
-print("="*80 + "\n")
+#print("="*80)
+#print("TEST 3: Full Autonomous Agent (With All Constraints)")
+#print("="*80 + "\n")
 
 # Create full agent
-full_agent = create_financial_agent(agent_type="full", with_memory=True)
+#full_agent = create_financial_agent(agent_type="full", with_memory=True)
 
 # Test query
-query = "Provide a comprehensive investment analysis for Microsoft (MSFT) including 3-year performance and AI research activity"
-print(f"Query: {query}\n")
-print("-"*80 + "\n")
+#query = "Provide a comprehensive investment analysis for Microsoft (MSFT) including 3-year performance and AI research activity"
+#print(f"Query: {query}\n")
+#print("-"*80 + "\n")
 
 # Run agent with memory
-config = {"configurable": {"thread_id": "test_session_1"}}
-result = full_agent.invoke(
-    {"messages": [HumanMessage(content=query)]},
-    config=config
-)
+#config = {"configurable": {"thread_id": "test_session_1"}}
+#result = full_agent.invoke(
+#    {"messages": [HumanMessage(content=query)]},
+ #   config=config
+#)
 
-print("\n🤖 FULL AGENT RESPONSE:")
-print("="*80)
-print(result["messages"][-1].content)
-print("\n" + "="*80)
-print("\n✅ Notice: The agent provides comprehensive analysis with:")
-print("   • Source citations")
-print("   • Multiple tool usage")
-print("   • Risk assessment")
-print("   • Clear recommendation with confidence")
-print("   • Data gap acknowledgment")
+#print("\n🤖 FULL AGENT RESPONSE:")
+#print("="*80)
+#print(result["messages"][-1].content)
+#print("\n" + "="*80)
+#print("\n✅ Notice: The agent provides comprehensive analysis with:")
+#print("   • Source citations")
+#print("   • Multiple tool usage")
+#print("   • Risk assessment")
+#print("   • Clear recommendation with confidence")
+#print("   • Data gap acknowledgment")
 
 
 # In[26]:
@@ -813,8 +813,8 @@ def get_stock_price_failing(ticker: str) -> Dict:
         'error': 'API connection timeout - service temporarily unavailable'
     }
 
-print("⚠️  Created failing version of get_stock_price for testing")
-print("   This will help us observe the agent's error handling behavior")
+#print("⚠️  Created failing version of get_stock_price for testing")
+#print("   This will help us observe the agent's error handling behavior")
 
 
 # In[27]:
@@ -862,7 +862,7 @@ def create_agent_with_failing_tool():
 
     return workflow.compile()
 
-print("✅ Agent with failing tool creation function defined")
+#print("✅ Agent with failing tool creation function defined")
 
 
 # In[28]:
@@ -870,34 +870,34 @@ print("✅ Agent with failing tool creation function defined")
 
 # Test Error Handling
 
-print("="*80)
-print("TEST 4: Error Handling and Reactivity")
-print("="*80 + "\n")
-print("⚠️  Simulating tool failure: get_stock_price will return an error")
-print("   Let's see how the agent reacts...\n")
-print("-"*80 + "\n")
+#print("="*80)
+#print("TEST 4: Error Handling and Reactivity")
+#print("="*80 + "\n")
+#print("⚠️  Simulating tool failure: get_stock_price will return an error")
+#print("   Let's see how the agent reacts...\n")
+#print("-"*80 + "\n")
 
 # Create agent with failing tool
 failing_agent = create_agent_with_failing_tool()
 
 # Test query
 query = "Analyze Apple stock (AAPL)"
-print(f"Query: {query}\n")
-print("-"*80 + "\n")
+#print(f"Query: {query}\n")
+#print("-"*80 + "\n")
 
 # Run agent
 result = failing_agent.invoke({"messages": [HumanMessage(content=query)]})
 
-print("\n🤖 AGENT RESPONSE (with tool failure):")
-print("="*80)
-print(result["messages"][-1].content)
-print("\n" + "="*80)
-print("\n✅ Observe how the agent:")
-print("   • Detects the tool failure")
-print("   • Tries alternative approaches (get_stock_history, news search)")
-print("   • Acknowledges the data gap in the report")
-print("   • Continues analysis with available information")
-print("   • Adjusts confidence level based on incomplete data")
+#print("\n🤖 AGENT RESPONSE (with tool failure):")
+#print("="*80)
+#print(result["messages"][-1].content)
+#print("\n" + "="*80)
+#print("\n✅ Observe how the agent:")
+#print("   • Detects the tool failure")
+#print("   • Tries alternative approaches (get_stock_history, news search)")
+#print("   • Acknowledges the data gap in the report")
+#print("   • Continues analysis with available information")
+#print("   • Adjusts confidence level based on incomplete data")
 
 
 # In[29]:
@@ -905,10 +905,10 @@ print("   • Adjusts confidence level based on incomplete data")
 
 # Test Your Own Queries
 
-my_agent = create_financial_agent("full", with_memory=True)
+#my_agent = create_financial_agent("full", with_memory=True)
 
 # Configure memory
-config = {"configurable": {"thread_id": "my_test_session"}}
+#config = {"configurable": {"thread_id": "my_test_session"}}
 
 # Test with your own query
 # Try these examples or create your own:
@@ -917,23 +917,23 @@ config = {"configurable": {"thread_id": "my_test_session"}}
 # - "What are the risks in investing in NVIDIA?"
 # - "Tell me about Amazon's financial performance"
 
-YOUR_QUERY =  """Provide a comprehensive investment analysis for Resolve AI (RZLV)"""
+#YOUR_QUERY =  """Provide a comprehensive investment analysis for Resolve AI (RZLV)"""
 
-print("="*80)
-print("YOUR CUSTOM QUERY TEST")
-print("="*80 + "\n")
-print(f"Query: {YOUR_QUERY}\n")
-print("-"*80 + "\n")
+#print("="*80)
+#print("YOUR CUSTOM QUERY TEST")
+#print("="*80 + "\n")
+#print(f"Query: {YOUR_QUERY}\n")
+#print("-"*80 + "\n")
 
-result = my_agent.invoke(
-    {"messages": [HumanMessage(content=YOUR_QUERY)]},
-    config=config
-)
+#result = my_agent.invoke(
+ #   {"messages": [HumanMessage(content=YOUR_QUERY)]},
+  #  config=config
+#)
 
-print("\n🤖 AGENT RESPONSE:")
-print("="*80)
-print(result["messages"][-1].content)
-print("\n" + "="*80)
+#print("\n🤖 AGENT RESPONSE:")
+#print("="*80)
+#print(result["messages"][-1].content)
+#print("\n" + "="*80)
 
 
 # In[30]:
@@ -945,11 +945,11 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 
-print("✅ RAG libraries imported successfully!")
-print("   • RecursiveCharacterTextSplitter - For document chunking")
-print("   • PyPDFDirectoryLoader - For loading PDF documents")
-print("   • Chroma - Vector database for semantic search")
-print("   • OpenAIEmbeddings - For creating embeddings")
+#print("✅ RAG libraries imported successfully!")
+#print("   • RecursiveCharacterTextSplitter - For document chunking")
+#print("   • PyPDFDirectoryLoader - For loading PDF documents")
+#print("   • Chroma - Vector database for semantic search")
+#print("   • OpenAIEmbeddings - For creating embeddings")
 
 
 # In[31]:
@@ -992,25 +992,25 @@ text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
 )
 
 
-print("✅ Text splitter configured:")
-print(f"   • Encoding: cl100k_base (OpenAI)")
-print(f"   • Chunk size: 1000 tokens")
-print(f"   • Chunk overlap: 200 tokens")
-print(f"   • Strategy: Recursive character splitting")
+#print("✅ Text splitter configured:")
+#print(f"   • Encoding: cl100k_base (OpenAI)")
+#print(f"   • Chunk size: 1000 tokens")
+#print(f"   • Chunk overlap: 200 tokens")
+#print(f"   • Strategy: Recursive character splitting")
 
 # Load and split documents
-print("\n📄 Loading and splitting PDF documents...")
+#print("\n📄 Loading and splitting PDF documents...")
 ai_initiative_chunks = loader.load_and_split(text_splitter)
 
-print(f"✅ Documents processed successfully!")
-print(f"   • Total chunks created: {len(ai_initiative_chunks)}")
-print(f"   • Average chunk size: ~1000 tokens")
+#print(f"✅ Documents processed successfully!")
+#print(f"   • Total chunks created: {len(ai_initiative_chunks)}")
+#print(f"   • Average chunk size: ~1000 tokens")
 
 # Show a sample chunk
 if ai_initiative_chunks:
-    print(f"\n📋 Sample chunk preview:")
-    print(f"   Source: {ai_initiative_chunks[0].metadata.get('source', 'Unknown')}")
-    print(f"   Content preview: {ai_initiative_chunks[0].page_content[:200]}...")
+    #print(f"\n📋 Sample chunk preview:")
+    #print(f"   Source: {ai_initiative_chunks[0].metadata.get('source', 'Unknown')}")
+    #print(f"   Content preview: {ai_initiative_chunks[0].page_content[:200]}...")
 
 
 # In[35]:
@@ -1025,13 +1025,13 @@ from langchain_community.vectorstores import Chroma
 # Initialize OpenAI embedding model (text-embedding-ada-002)
 embedding_model = OpenAIEmbeddings(model='text-embedding-ada-002')
 
-print("✅ Embedding model initialized: text-embedding-ada-002")
-print("   • Embedding dimension: 1536")
-print("   • Use case: Semantic similarity search")
+#print("✅ Embedding model initialized: text-embedding-ada-002")
+#print("   • Embedding dimension: 1536")
+#print("   • Use case: Semantic similarity search")
 
 # Create vector store from documents
-print("\n🔄 Creating vector store (this may take a moment)...")
-print("   Generating embeddings for all chunks...")
+#print("\n🔄 Creating vector store (this may take a moment)...")
+#print("   Generating embeddings for all chunks...")
 
 vectorstore = Chroma.from_documents(
     ai_initiative_chunks,
@@ -1039,10 +1039,10 @@ vectorstore = Chroma.from_documents(
     collection_name="AI_Initiatives"
 )
 
-print(f"\n✅ Vector store created successfully!")
-print(f"   • Collection name: AI_Initiatives")
-print(f"   • Total vectors: {len(ai_initiative_chunks)}")
-print(f"   • Database: ChromaDB (in-memory)")
+#print(f"\n✅ Vector store created successfully!")
+#print(f"   • Collection name: AI_Initiatives")
+#print(f"   • Total vectors: {len(ai_initiative_chunks)}")
+#print(f"   • Database: ChromaDB (in-memory)")
 
 # Create retriever for similarity search which fetches 10 relevant chunks
 retriever = vectorstore.as_retriever(
@@ -1050,10 +1050,10 @@ retriever = vectorstore.as_retriever(
     search_kwargs={'k': 10}
 )
 
-print(f"\n✅ Retriever configured:")
-print(f"   • Search type: Similarity")
-print(f"   • Top-k results: 10")
-print(f"   • Ready for queries!")
+#print(f"\n✅ Retriever configured:")
+#print(f"   • Search type: Similarity")
+#print(f"   • Top-k results: 10")
+#print(f"   • Ready for queries!")
 
 
 # In[36]:
@@ -1062,21 +1062,21 @@ print(f"   • Ready for queries!")
 # Test query - Let's test the retrieval system manually before integrating it with the agent.
 test_query = "What AI projects is Microsoft working on?"
 
-print(f"🔍 Test Query: {test_query}")
-print("="*80)
+#print(f"🔍 Test Query: {test_query}")
+#print("="*80)
 
 # Retrieve relevant documents
 relevant_docs = retriever.get_relevant_documents(test_query)
 
-print(f"\n✅ Retrieved {len(relevant_docs)} relevant chunks:\n")
+#print(f"\n✅ Retrieved {len(relevant_docs)} relevant chunks:\n")
 
 # Display top 3 results
 for i, doc in enumerate(relevant_docs[:3], 1):
-    print(f"📄 Result {i}:")
-    print(f"   Source: {doc.metadata.get('source', 'Unknown')}")
-    print(f"   Page: {doc.metadata.get('page', 'Unknown')}")
-    print(f"   Content: {doc.page_content[:300]}...")
-    print("-"*80 + "\n")
+   # print(f"📄 Result {i}:")
+   # print(f"   Source: {doc.metadata.get('source', 'Unknown')}")
+   # print(f"   Page: {doc.metadata.get('page', 'Unknown')}")
+    #print(f"   Content: {doc.page_content[:300]}...")
+    #print("-"*80 + "\n")
 
 
 # In[37]:
@@ -1158,10 +1158,10 @@ Here are some documents that are relevant to the question mentioned below.
     except Exception as e:
         return f"Error querying private database: {str(e)}"
 
-print("✅ Tool 5: query_private_database() - Defined")
-print("   Purpose: Access private analyst reports via RAG")
-print("   Data Source: ChromaDB vector store")
-print("   Powered by: OpenAI embeddings + LLM generation")
+#print("✅ Tool 5: query_private_database() - Defined")
+#print("   Purpose: Access private analyst reports via RAG")
+#print("   Data Source: ChromaDB vector store")
+#print("   Powered by: OpenAI embeddings + LLM generation")
 
 
 # In[38]:
@@ -1175,11 +1175,11 @@ test_queries = [
 ]
 
 for test_query in test_queries:
-    print("="*80)
-    print(f"🔍 Query: {test_query}\n")
-    result = query_private_database.invoke({"query": test_query})
-    print(f"📄 Answer:\n{result}")
-    print("\n")
+    #print("="*80)
+    #print(f"🔍 Query: {test_query}\n")
+    #result = query_private_database.invoke({"query": test_query})
+    #print(f"📄 Answer:\n{result}")
+    #print("\n")
 
 
 # In[39]:
@@ -1324,10 +1324,10 @@ always drive toward your goal of comprehensive investment analysis.
 Use ALL available tools, especially the private database for AI research insights.
 """
 
-print("✅ Updated Agent Charter (with RAG tool)")
-print("   • Added query_private_database to available tools")
-print("   • Added AI Research Activity Check requirements")
-print("   • Enhanced quality standards")
+#print("✅ Updated Agent Charter (with RAG tool)")
+#print("   • Added query_private_database to available tools")
+#print("   • Added AI Research Activity Check requirements")
+#print("   • Enhanced quality standards")
 
 
 # In[40]:
@@ -1452,9 +1452,9 @@ def create_enhanced_financial_agent(with_rag: bool = True, with_memory: bool = T
     logger.info("✅ Enhanced agent created successfully\n")
     return graph
 
-print("✅ Enhanced agent creation function defined")
-print("   • Includes all 5 tools (stock, news, sentiment, RAG)")
-print("   • Uses updated charter with AI research requirements")
+#print("✅ Enhanced agent creation function defined")
+#print("   • Includes all 5 tools (stock, news, sentiment, RAG)")
+#print("   • Uses updated charter with AI research requirements")
 
 
 # In[41]:
@@ -1464,17 +1464,17 @@ print("   • Uses updated charter with AI research requirements")
 
 # Let's test the enhanced agent's ability to analyze companies with AI research insights.
 
-print("="*80)
-print("TEST 5: Enhanced Agent with RAG - AI Research Activity Check")
-print("="*80 + "\n")
+#print("="*80)
+#print("TEST 5: Enhanced Agent with RAG - AI Research Activity Check")
+#print("="*80 + "\n")
 
 # Create enhanced agent with RAG
 enhanced_agent = create_enhanced_financial_agent(with_rag=True, with_memory=True)
 
 # Test query that requires AI research information
 query = "Provide a comprehensive investment analysis for NVIDIA (NVDA) including their AI research initiatives"
-print(f"Query: {query}\n")
-print("-"*80 + "\n")
+#print(f"Query: {query}\n")
+#print("-"*80 + "\n")
 
 # Run agent with memory
 config = {"configurable": {"thread_id": "enhanced_test_1"}}
@@ -1484,54 +1484,54 @@ result = enhanced_agent.invoke(
     config=config
 )
 
-print("\n🤖 ENHANCED AGENT RESPONSE (with RAG):")
-print("="*80)
-print(result["messages"][-1].content)
-print("\n" + "="*80)
-print("\n✅ Notice: The agent now includes:")
-print("   • AI research projects from private analyst reports")
-print("   • Specific AI initiative details")
-print("   • Integration of financial + AI research data")
-print("   • Comprehensive investment recommendation")
+#print("\n🤖 ENHANCED AGENT RESPONSE (with RAG):")
+#print("="*80)
+#print(result["messages"][-1].content)
+#print("\n" + "="*80)
+#print("\n✅ Notice: The agent now includes:")
+#print("   • AI research projects from private analyst reports")
+#print("   • Specific AI initiative details")
+#print("   • Integration of financial + AI research data")
+#print("   • Comprehensive investment recommendation")
 
 
 # In[43]:
 
 
 # Demonstrate how the agent uses multiple tools together: news search → sentiment analysis → RAG query.
-print("="*80)
-print("TEST 6: Synergistic Tool Usage (News + Sentiment + RAG)")
-print("="*80 + "\n")
+#print("="*80)
+#print("TEST 6: Synergistic Tool Usage (News + Sentiment + RAG)")
+#print("="*80 + "\n")
 
 query = "Analyze Microsoft's position in the AI market. Include recent news sentiment and their strategic AI initiatives."
-print(f"Query: {query}\n")
-print("-"*80 + "\n")
+#print(f"Query: {query}\n")
+#print("-"*80 + "\n")
 
 config = {"configurable": {"thread_id": "synergy_test_1"}}
-result = enhanced_agent.invoke(
+#result = enhanced_agent.invoke(
     {"messages": [HumanMessage(content=query)]},
     config=config
 )
 
-print("\n🤖 AGENT RESPONSE (Synergistic Tool Usage):")
-print("="*80)
-print(result["messages"][-1].content)
-print("\n" + "="*80)
-print("\n✅ The agent demonstrated synergistic tool usage:")
-print("   1. search_financial_news() - Found recent articles")
-print("   2. analyze_sentiment() - Analyzed news sentiment")
-print("   3. query_private_database() - Retrieved AI initiative details")
-print("   4. get_stock_history() - Got financial performance")
-print("   5. Synthesized all data into comprehensive report")
+#print("\n🤖 AGENT RESPONSE (Synergistic Tool Usage):")
+#print("="*80)
+#print(result["messages"][-1].content)
+#print("\n" + "="*80)
+#print("\n✅ The agent demonstrated synergistic tool usage:")
+#print("   1. search_financial_news() - Found recent articles")
+#print("   2. analyze_sentiment() - Analyzed news sentiment")
+#print("   3. query_private_database() - Retrieved AI initiative details")
+#print("   4. get_stock_history() - Got financial performance")
+#print("   5. Synthesized all data into comprehensive report")
 
 
 # In[45]:
 
 
 # Rank companies based on both financial performance AND AI research activity.
-print("="*80)
-print("TEST 7: Investment Recommendation System - Multi-Company Ranking")
-print("="*80 + "\n")
+#print("="*80)
+#print("TEST 7: Investment Recommendation System - Multi-Company Ranking")
+#print("="*80 + "\n")
 
 # Define companies to analyze
 companies = ["MSFT", "GOOGL", "NVDA", "AMZN", "IBM"]
@@ -1558,20 +1558,20 @@ After analyzing each company individually, produce:
 
 """
 
-print(f"Query: Multi-company investment ranking\n")
-print(f"Companies: {', '.join(companies)}\n")
-print("-"*80 + "\n")
+#print(f"Query: Multi-company investment ranking\n")
+#print(f"Companies: {', '.join(companies)}\n")
+#print("-"*80 + "\n")
 
 config = {"configurable": {"thread_id": "ranking_test_1"}}
-result = enhanced_agent.invoke(
+#result = enhanced_agent.invoke(
     {"messages": [HumanMessage(content=query)]},
     config=config
 )
 
-print("\n🤖 INVESTMENT RANKING REPORT:")
-print("="*80)
-print(result["messages"][-1].content)
-print("\n" + "="*80)
+#print("\n🤖 INVESTMENT RANKING REPORT:")
+#print("="*80)
+#print(result["messages"][-1].content)
+#print("\n" + "="*80)
 
 
 # In[46]:
@@ -1583,20 +1583,20 @@ print("\n" + "="*80)
 #custom_query = "Which public company currently leads the industry in innovative AI research? Provide evidence from private analyst reports, recent financial news, and any available AI initiative documents. Include citations, sentiment analysis, and a recommendation backed by confidence scoring."
 #custom_query = "Compare NVIDIA and AMD in the context of AI infrastructure leadership. Include stock performance, news sentiment, AI research projects (from private database), competitive advantages, risks, and a final recommendation with confidence levels."
 custom_query = "Find a public company with strong financial performance but underreported AI initiatives. Use stock history, news sentiment, and private AI reports. Explain why their AI innovation is underreported, and whether this represents an investment opportunity."
-print("="*80)
-print("YOUR CUSTOM QUERY")
-print("="*80 + "\n")
-print(f"Query: {custom_query}\n")
-print("-"*80 + "\n")
+#print("="*80)
+#print("YOUR CUSTOM QUERY")
+#print("="*80 + "\n")
+#print(f"Query: {custom_query}\n")
+#print("-"*80 + "\n")
 
 config = {"configurable": {"thread_id": "ranking_test_1"}}
-result = enhanced_agent.invoke(
+#result = enhanced_agent.invoke(
     {"messages": [HumanMessage(content=custom_query)]},
     config=config
 )
 
-print("\n🤖 AGENT RESPONSE:")
-print("="*80)
-print(result["messages"][-1].content)
-print("\n" + "="*80)
+#print("\n🤖 AGENT RESPONSE:")
+#print("="*80)
+#print(result["messages"][-1].content)
+#print("\n" + "="*80)
 
