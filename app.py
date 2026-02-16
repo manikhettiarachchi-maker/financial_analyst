@@ -1479,7 +1479,7 @@ def create_enhanced_financial_agent(with_rag: bool = True, with_memory: bool = T
 
 #custom_query = "Which public company currently leads the industry in innovative AI research? Provide evidence from private analyst reports, recent financial news, and any available AI initiative documents. Include citations, sentiment analysis, and a recommendation backed by confidence scoring."
 #custom_query = "Compare NVIDIA and AMD in the context of AI infrastructure leadership. Include stock performance, news sentiment, AI research projects (from private database), competitive advantages, risks, and a final recommendation with confidence levels."
-custom_query = "Find a public company with strong financial performance but underreported AI initiatives. Use stock history, news sentiment, and private AI reports. Explain why their AI innovation is underreported, and whether this represents an investment opportunity."
+#custom_query = "Find a public company with strong financial performance but underreported AI initiatives. Use stock history, news sentiment, and private AI reports. Explain why their AI innovation is underreported, and whether this represents an investment opportunity."
 #print("="*80)
 #print("YOUR CUSTOM QUERY")
 #print("="*80 + "\n")
@@ -1489,8 +1489,8 @@ custom_query = "Find a public company with strong financial performance but unde
 config = {"configurable": {"thread_id": "ranking_test_1"}}
 #result = enhanced_agent.invoke(
    # {"messages": [HumanMessage(content=custom_query)]},
-    config=config
-)
+    #config=config
+#)
 
 #print("\n🤖 AGENT RESPONSE:")
 #print("="*80)
