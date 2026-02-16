@@ -1072,6 +1072,7 @@ relevant_docs = retriever.get_relevant_documents(test_query)
 
 # Display top 3 results
 for i, doc in enumerate(relevant_docs[:3], 1):
+    pass
    # print(f"📄 Result {i}:")
    # print(f"   Source: {doc.metadata.get('source', 'Unknown')}")
    # print(f"   Page: {doc.metadata.get('page', 'Unknown')}")
