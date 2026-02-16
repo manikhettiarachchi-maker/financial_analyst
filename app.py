@@ -1507,15 +1507,15 @@ result = enhanced_agent.invoke(
 #print("TEST 6: Synergistic Tool Usage (News + Sentiment + RAG)")
 #print("="*80 + "\n")
 
-query = "Analyze Microsoft's position in the AI market. Include recent news sentiment and their strategic AI initiatives."
+#query = "Analyze Microsoft's position in the AI market. Include recent news sentiment and their strategic AI initiatives."
 #print(f"Query: {query}\n")
 #print("-"*80 + "\n")
 
-config = {"configurable": {"thread_id": "synergy_test_1"}}
+#config = {"configurable": {"thread_id": "synergy_test_1"}}
 #result = enhanced_agent.invoke(
-    {"messages": [HumanMessage(content=query)]},
-    config=config
-)
+#    {"messages": [HumanMessage(content=query)]},
+ #   config=config
+#)
 
 #print("\n🤖 AGENT RESPONSE (Synergistic Tool Usage):")
 #print("="*80)
