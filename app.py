@@ -7,9 +7,9 @@
 # Install required packages
 # Run this cell first before executing the rest of the notebook
 
-get_ipython().system('pip install    langchain==0.3.27    langchain-core==0.3.79    langchain-openai==0.3.11    langchain-community==0.3.31    langgraph==0.3.7    tavily-python    yfinance==0.2.66    chromadb==1.3.4    pypdf==6.2.0    tiktoken==0.12.0')
+#get_ipython().system('pip install    langchain==0.3.27    langchain-core==0.3.79    langchain-openai==0.3.11    langchain-community==0.3.31    langgraph==0.3.7    tavily-python    yfinance==0.2.66    chromadb==1.3.4    pypdf==6.2.0    tiktoken==0.12.0')
 
-print("✅ All packages installed successfully!")
+#print("✅ All packages installed successfully!")
 
 
 # In[3]:
