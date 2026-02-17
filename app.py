@@ -938,9 +938,20 @@ from langchain_openai import OpenAIEmbeddings
 
 
 # Unzipping the AI Initiatives Documents
+import os
 import zipfile
-with zipfile.ZipFile("/content/drive/MyDrive/JHU_AI/Project_2/Companies-AI-Initiatives.zip", 'r') as zip_ref:
-  zip_ref.extractall("/content/")         # Storing all the unzipped contents in this location
+
+def load_company_data():
+    path = "/content/drive/MyDrive/JHU_AI/Project_2/Companies-AI-Initiatives.zip"
+
+    if not os.path.exists(path):
+        print("ZIP file not found — skipping dataset load")
+        return None
+
+    with zipfile.ZipFile(path, 'r') as zip_ref:
+        zip_ref.extractall("data")
+
+    return "data"
 
 
 # In[32]:
