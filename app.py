@@ -30,18 +30,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-#print("✅ All imports successful!")
-
-
-# In[4]:
-
-
 
 # In[5]:
 
 
 
-   # config = json.load(file)
+  
 
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
@@ -73,18 +67,6 @@ Generate a comprehensive financial analysis report for the requested company tha
 Take initiative to gather all necessary information to achieve this goal.
 Don't just answer questions - proactively provide complete, actionable insights."""
 
-#print("📋 Agent Charter (Goal-Oriented):")
-#print("="*80)
-#print(AGENT_CHARTER_BASIC)
-#print("="*80)
-#print("\n✅ Benefits of this approach:")
-#print("   • Defines a clear mission and goal")
-#print("   • Specifies expected output format")
-#print("   • Encourages proactive information gathering")
-#print("   • Focuses on actionable insights, not just answers")
-
-
-# In[6]:
 
 
 # Stock Price Tool - Tools are the agent's actuators - they allow the agent to interact with the real world. Let's define and explore our financial research tools.
@@ -479,14 +461,6 @@ Remember: You are AUTONOMOUS. Take initiative, handle errors gracefully, and
 always drive toward your goal of comprehensive investment analysis.
 """
 
-#print("📋 Full Agent Charter with Constraints:")
-#print("="*80)
-#print("Key features:")
-#print("✅ Proactive Behavior: Takes initiative, gathers comprehensive data")
-#print("✅ Reactive Behavior: Handles tool failures, adapts to missing data")
-#print("✅ Autonomous Behavior: Makes independent judgments, cites sources")
-#print("✅ Quality Standards: Structured output with confidence levels")
-#print("="*80)
 
 
 # In[12]:
@@ -782,8 +756,6 @@ else:
     ai_initiative_chunks = loader.load_and_split(text_splitter)
 
 
-
-
 # Step 4: Create Vector Store with Embeddings - create embeddings for each chunk and store them in ChromaDB for semantic search.
 
 from langchain_openai import OpenAIEmbeddings
@@ -793,13 +765,6 @@ from langchain_community.vectorstores import Chroma
 # Initialize OpenAI embedding model (text-embedding-ada-002)
 embedding_model = OpenAIEmbeddings(model='text-embedding-ada-002')
 
-#print("✅ Embedding model initialized: text-embedding-ada-002")
-#print("   • Embedding dimension: 1536")
-#print("   • Use case: Semantic similarity search")
-
-# Create vector store from documents
-#print("\n🔄 Creating vector store (this may take a moment)...")
-#print("   Generating embeddings for all chunks...")
 
 vectorstore = Chroma.from_documents(
     ai_initiative_chunks,
@@ -807,21 +772,13 @@ vectorstore = Chroma.from_documents(
     collection_name="AI_Initiatives"
 )
 
-#print(f"\n✅ Vector store created successfully!")
-#print(f"   • Collection name: AI_Initiatives")
-#print(f"   • Total vectors: {len(ai_initiative_chunks)}")
-#print(f"   • Database: ChromaDB (in-memory)")
 
-# Create retriever for similarity search which fetches 10 relevant chunks
 retriever = vectorstore.as_retriever(
     search_type= 'similarity',
     search_kwargs={'k': 10}
 )
 
-#print(f"\n✅ Retriever configured:")
-#print(f"   • Search type: Similarity")
-#print(f"   • Top-k results: 10")
-#print(f"   • Ready for queries!")
+
 
 
 # In[36]:
@@ -841,14 +798,7 @@ relevant_docs = retriever.get_relevant_documents(test_query)
 # Display top 3 results
 for i, doc in enumerate(relevant_docs[:3], 1):
     pass
-   # print(f"📄 Result {i}:")
-   # print(f"   Source: {doc.metadata.get('source', 'Unknown')}")
-   # print(f"   Page: {doc.metadata.get('page', 'Unknown')}")
-    #print(f"   Content: {doc.page_content[:300]}...")
-    #print("-"*80 + "\n")
-
-
-# In[37]:
+  
 
 
 # Implement query_private_database Tool
@@ -928,11 +878,6 @@ Here are some documents that are relevant to the question mentioned below.
 
     except Exception as e:
         return f"Error querying private database: {str(e)}"
-
-#print("✅ Tool 5: query_private_database() - Defined")
-#print("   Purpose: Access private analyst reports via RAG")
-#print("   Data Source: ChromaDB vector store")
-#print("   Powered by: OpenAI embeddings + LLM generation")
 
 
 # In[38]:
@@ -1221,20 +1166,9 @@ def create_enhanced_financial_agent(with_rag: bool = True, with_memory: bool = T
     logger.info("✅ Enhanced agent created successfully\n")
     return graph
 
-#print("✅ Enhanced agent creation function defined")
-#print("   • Includes all 5 tools (stock, news, sentiment, RAG)")
-#print("   • Uses updated charter with AI research requirements")
 
 
 # In[41]:
-
-
-
-
-
-
-
-
 
 # In[46]:
 
