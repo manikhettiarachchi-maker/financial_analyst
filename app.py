@@ -942,7 +942,7 @@ import os
 import zipfile
 
 def load_company_data():
-    path = "/content/drive/MyDrive/JHU_AI/Project_2/Companies-AI-Initiatives.zip"
+    path = "data/Companies-AI-Initiatives.zip"
 
     if not os.path.exists(path):
         print("ZIP file not found — skipping dataset load")
