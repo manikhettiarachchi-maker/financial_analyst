@@ -937,37 +937,16 @@ from langchain_openai import OpenAIEmbeddings
 # In[31]:
 
 
-# Unzipping the AI Initiatives Documents
-import os
-import zipfile
+from langchain_community.document_loaders import PyPDFDirectoryLoader
 
-def load_company_data():
-    path = "data/Companies-AI-Initiatives.zip"
+def get_pdf_loader():
+    folder = "data/Companies-AI-Initiatives"
 
-    if not os.path.exists(path):
-        print("ZIP file not found — skipping dataset load")
+    if not os.path.exists(folder):
+        print("Dataset folder missing — skipping PDF loader")
         return None
 
-    with zipfile.ZipFile(path, 'r') as zip_ref:
-        zip_ref.extractall("data")
-
-    return "data"
-
-
-# In[32]:
-
-
-# Path of all AI Initiative Documents
-ai_initiative_pdf_paths = [f"/content/Companies-AI-Initiatives/{file}" for file in os.listdir("/content/Companies-AI-Initiatives")]
-ai_initiative_pdf_paths
-
-
-# In[33]:
-
-
-from langchain_community.document_loaders import PyPDFDirectoryLoader
-loader = PyPDFDirectoryLoader(path = "/content/Companies-AI-Initiatives/")          # Creating an PDF loader object
-
+    return PyPDFDirectoryLoader(path=folder)
 
 # In[34]:
 
