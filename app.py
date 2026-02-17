@@ -1,19 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-# Install required packages
-# Run this cell first before executing the rest of the notebook
-
-#get_ipython().system('pip install    langchain==0.3.27    langchain-core==0.3.79    langchain-openai==0.3.11    langchain-community==0.3.31    langgraph==0.3.7    tavily-python    yfinance==0.2.66    chromadb==1.3.4    pypdf==6.2.0    tiktoken==0.12.0')
-
-#print("✅ All packages installed successfully!")
-
 
 # In[3]:
-
 
 # Setup and Imports - Core imports - all necessary libraries and configure our environment.
 import os
@@ -50,10 +36,6 @@ logger = logging.getLogger(__name__)
 # In[4]:
 
 
-# Let Google Colab access my google drive
-#from google.colab import drive
-#drive.mount('/content/drive')
-
 
 # In[5]:
 
@@ -69,36 +51,11 @@ OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY")
 OPENAI_API_BASE = os.environ.get("OPENAI_API_BASE")
 
-#print("✅ Configuration loaded successfully!")
-#print(f"   Using API base: {os.environ['OPENAI_API_BASE']}")
 
-
-# ---
-# 
-# # Section 1.1: The Goal (Proactiveness)
-# 
-# ## From Passive LLM to Proactive Agent
-# 
-# The key difference between a traditional LLM and an autonomous agent is **proactiveness**. Let's see this in action.
-
-# In[19]:
-
-
-# Traditional LLM Prompt (Reactive)
-# This is a typical prompt for a traditional LLM - simple, reactive, and passive.
 
 TRADITIONAL_PROMPT = """You are a helpful assistant.
 Answer the user's question about stock information."""
 
-#print("📋 Traditional LLM Prompt:")
-#print("="*80)
-#print(TRADITIONAL_PROMPT)
-#print("="*80)
-#print("\n❌ Problems with this approach:")
-#print("   • No initiative - waits for user to specify what they want")
-#print("   • No comprehensive analysis - just answers the question")
-#print("   • Asks follow-up questions instead of taking action")
-#print("   • Provides minimal information")
 
 
 # In[21]:
@@ -334,9 +291,6 @@ def search_financial_news(query: str) -> List[Dict]:
             'error': f'Error searching news: {str(e)}'
         }]
 
-#print("✅ Tool 3: search_financial_news() - Defined")
-#print("   Purpose: Search real-time financial news")
-#print("   Data Source: Tavily Search API")
 
 
 # In[9]:
@@ -419,25 +373,6 @@ Respond in JSON format:
             'note': f'OpenAI analysis failed: {str(e)}'
         }
 
-#print("✅ Tool 4: analyze_sentiment() - Defined")
-#print("   Purpose: Analyze sentiment of financial text")
-#print("   Method: OpenAI GPT-4 with keyword fallback")
-
-
-# In[10]:
-
-
-# Test get_stock_price manually
-#print("🧪 Testing get_stock_price tool with ticker 'AAPL':\n")
-#result = get_stock_price.invoke({"ticker": "AAPL"})
-#print(json.dumps(result, indent=2))
-
-#print("\n" + "="*80 + "\n")
-
-# Test get_stock_history manually
-#print("🧪 Testing get_stock_history tool with ticker 'AAPL' and period '3y':\n")
-#result = get_stock_history.invoke({"ticker": "AAPL", "period": "3y"})
-#print(json.dumps(result, indent=2))
 
 
 # In[17]:
@@ -704,96 +639,6 @@ def create_financial_agent(agent_type: str = "full", with_memory: bool = True):
 # In[22]:
 
 
-# Testing the Agent
-# Traditional LLM (Reactive)
-
-#print("="*80)
-#print("TEST 1: Traditional Reactive LLM")
-#print("="*80 + "\n")
-
-# Create traditional agent
-#traditional_agent = create_financial_agent(agent_type="traditional", with_memory=False)
-
-# Test query
-#query = "Tell me about Apple stock"
-#print(f"Query: {query}\n")
-#print("-"*80 + "\n")
-
-# Run agent
-#result = traditional_agent.invoke({"messages": [HumanMessage(content=query)]})
-
-#print("\n🤖 TRADITIONAL LLM RESPONSE:")
-#print("="*80)
-#print(result["messages"][-1].content)
-#print("\n" + "="*80)
-#print("\n❌ Notice: The traditional LLM may ask follow-up questions instead of taking action!")
-
-
-# In[24]:
-
-
-# Basic Autonomous Agent (Goal-Oriented)
-#print("="*80)
-#print("TEST 2: Basic Autonomous Agent (Goal-Oriented)")
-#print("="*80 + "\n")
-
-# Create basic agent
-#basic_agent = create_financial_agent(agent_type="basic", with_memory=False)
-
-# Test query
-#query = "Tell me about Apple stock"
-#print(f"Query: {query}\n")
-#print("-"*80 + "\n")
-
-# Run agent
-#result = basic_agent.invoke({"messages": [HumanMessage(content=query)]})
-
-#print("\n🤖 BASIC AGENT RESPONSE:")
-#print("="*80)
-#print(result["messages"][-1].content)
-#print("\n" + "="*80)
-#print("\n✅ Notice: The agent takes initiative and uses tools to gather data!")
-
-
-# In[25]:
-
-
-# Test 3: Full Autonomous Agent (With All Constraints)
-
-#print("="*80)
-#print("TEST 3: Full Autonomous Agent (With All Constraints)")
-#print("="*80 + "\n")
-
-# Create full agent
-#full_agent = create_financial_agent(agent_type="full", with_memory=True)
-
-# Test query
-#query = "Provide a comprehensive investment analysis for Microsoft (MSFT) including 3-year performance and AI research activity"
-#print(f"Query: {query}\n")
-#print("-"*80 + "\n")
-
-# Run agent with memory
-#config = {"configurable": {"thread_id": "test_session_1"}}
-#result = full_agent.invoke(
-#    {"messages": [HumanMessage(content=query)]},
- #   config=config
-#)
-
-#print("\n🤖 FULL AGENT RESPONSE:")
-#print("="*80)
-#print(result["messages"][-1].content)
-#print("\n" + "="*80)
-#print("\n✅ Notice: The agent provides comprehensive analysis with:")
-#print("   • Source citations")
-#print("   • Multiple tool usage")
-#print("   • Risk assessment")
-#print("   • Clear recommendation with confidence")
-#print("   • Data gap acknowledgment")
-
-
-# In[26]:
-
-
 # Simulating Tool Failures - Let's test how the agent handles failures by creating a version that simulates errors.
 # Create a modified version of get_stock_price that always fails
 @tool
@@ -885,37 +730,7 @@ if __name__ == "__main__":
 # In[29]:
 
 
-# Test Your Own Queries
 
-#my_agent = create_financial_agent("full", with_memory=True)
-
-# Configure memory
-#config = {"configurable": {"thread_id": "my_test_session"}}
-
-# Test with your own query
-# Try these examples or create your own:
-# - "Analyze Tesla stock"
-# - "Compare Microsoft and Google AI initiatives"
-# - "What are the risks in investing in NVIDIA?"
-# - "Tell me about Amazon's financial performance"
-
-#YOUR_QUERY =  """Provide a comprehensive investment analysis for Resolve AI (RZLV)"""
-
-#print("="*80)
-#print("YOUR CUSTOM QUERY TEST")
-#print("="*80 + "\n")
-#print(f"Query: {YOUR_QUERY}\n")
-#print("-"*80 + "\n")
-
-#result = my_agent.invoke(
- #   {"messages": [HumanMessage(content=YOUR_QUERY)]},
-  #  config=config
-#)
-
-#print("\n🤖 AGENT RESPONSE:")
-#print("="*80)
-#print(result["messages"][-1].content)
-#print("\n" + "="*80)
 
 
 # In[30]:
@@ -927,11 +742,6 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 
-#print("✅ RAG libraries imported successfully!")
-#print("   • RecursiveCharacterTextSplitter - For document chunking")
-#print("   • PyPDFDirectoryLoader - For loading PDF documents")
-#print("   • Chroma - Vector database for semantic search")
-#print("   • OpenAIEmbeddings - For creating embeddings")
 
 
 # In[31]:
@@ -964,11 +774,6 @@ text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
 )
 
 
-#print("✅ Text splitter configured:")
-#print(f"   • Encoding: cl100k_base (OpenAI)")
-#print(f"   • Chunk size: 1000 tokens")
-#print(f"   • Chunk overlap: 200 tokens")
-#print(f"   • Strategy: Recursive character splitting")
 
 # Load and split documents
 #print("\n📄 Loading and splitting PDF documents...")
@@ -979,18 +784,7 @@ if loader is None:
 else:
     ai_initiative_chunks = loader.load_and_split(text_splitter)
 
-#print(f"✅ Documents processed successfully!")
-#print(f"   • Total chunks created: {len(ai_initiative_chunks)}")
-#print(f"   • Average chunk size: ~1000 tokens")
 
-# Show a sample chunk
-#if ai_initiative_chunks:
-    #print(f"\n📋 Sample chunk preview:")
-    #print(f"   Source: {ai_initiative_chunks[0].metadata.get('source', 'Unknown')}")
-    #print(f"   Content preview: {ai_initiative_chunks[0].page_content[:200]}...")
-
-
-# In[35]:
 
 
 # Step 4: Create Vector Store with Embeddings - create embeddings for each chunk and store them in ChromaDB for semantic search.
@@ -1305,10 +1099,7 @@ always drive toward your goal of comprehensive investment analysis.
 Use ALL available tools, especially the private database for AI research insights.
 """
 
-#print("✅ Updated Agent Charter (with RAG tool)")
-#print("   • Added query_private_database to available tools")
-#print("   • Added AI Research Activity Check requirements")
-#print("   • Enhanced quality standards")
+
 
 
 # In[40]:
@@ -1451,17 +1242,7 @@ def create_enhanced_financial_agent(with_rag: bool = True, with_memory: bool = T
 # In[46]:
 
 
-# Final Interactive Test Cell
-# Try your own custom queries here!
 
-#custom_query = "Which public company currently leads the industry in innovative AI research? Provide evidence from private analyst reports, recent financial news, and any available AI initiative documents. Include citations, sentiment analysis, and a recommendation backed by confidence scoring."
-#custom_query = "Compare NVIDIA and AMD in the context of AI infrastructure leadership. Include stock performance, news sentiment, AI research projects (from private database), competitive advantages, risks, and a final recommendation with confidence levels."
-#custom_query = "Find a public company with strong financial performance but underreported AI initiatives. Use stock history, news sentiment, and private AI reports. Explain why their AI innovation is underreported, and whether this represents an investment opportunity."
-#print("="*80)
-#print("YOUR CUSTOM QUERY")
-#print("="*80 + "\n")
-#print(f"Query: {custom_query}\n")
-#print("-"*80 + "\n")
 
 config = {"configurable": {"thread_id": "ranking_test_1"}}
 #result = enhanced_agent.invoke(
