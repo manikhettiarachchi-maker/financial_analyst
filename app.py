@@ -1528,3 +1528,19 @@ if __name__ == "__main__":
     # It will NOT run on Cloud Run import.
     demo = {"query": "Provide an investment analysis for NVDA, focusing on AI initiatives."}
     print(run_agent(demo))
+
+#---17/02/2026---
+
+_agent = None
+
+def get_agent():
+    global _agent
+    if _agent is None:
+        _agent = create_agent()  # your existing function that builds the langgraph agent
+    return _agent
+
+def run_agent(query: str) -> str:
+    agent = get_agent()
+    result = agent.invoke({"messages": [{"role": "user", "content": query}]})
+    # adjust depending on your result format:
+    return str(result)
