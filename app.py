@@ -972,7 +972,12 @@ text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
 
 # Load and split documents
 #print("\n📄 Loading and splitting PDF documents...")
-ai_initiative_chunks = loader.load_and_split(text_splitter)
+loader = get_pdf_loader()
+
+if loader is None:
+    ai_initiative_chunks = []
+else:
+    ai_initiative_chunks = loader.load_and_split(text_splitter)
 
 #print(f"✅ Documents processed successfully!")
 #print(f"   • Total chunks created: {len(ai_initiative_chunks)}")
